@@ -1,0 +1,6 @@
+exerciseRepository G:\reposUge1
+Donald Duck;https://github.com/kea-fall2023/carsw1-donald.git;Uge1
+Peter Pan;https://github.com/kea-fall2023/carsw1.git;Uge1
+Mickey Mouse;https://github.com/kea-fall2023/carsw1-michey.git;Uge1
+Goofy;https://github.com/kea-fall2023/i-dont-exist.git;Uge1
+...
