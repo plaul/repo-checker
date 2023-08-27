@@ -8,6 +8,7 @@ function isValidLine(line) {
   const regex = /^[^;]+;https:\/\/github\.com\/[^\/]+\/[^\/]+;[^;]+$/;
   return regex.test(line);
 }
+
 function readAndParseFile(filePath) {
   let content = "";
   try {
@@ -38,8 +39,10 @@ function readAndParseFile(filePath) {
 }
 
 async function main(...args) {
+  // Get the path to the file containing the configuration
   const file = `${process.cwd()}\\result\\input\\repos-to-check.txt`;
   
+  // Open and parse lines from file
   let lines
   try{
     console.log(`Reading file ${file}`);
@@ -50,16 +53,25 @@ async function main(...args) {
     process.exit(1);
   }
   
+  // Check if there are any NON valid lines in the file
+  // and print them to the console
   if (lines.nonValidLines.length > 0) {
     console.error("The following lines are not valid, and will not be used:");
     lines.nonValidLines.forEach(line => console.log(line));
     //process.exit(1);
   }
+
+  // Check if there are any valid lines in the file
+  // and exit the program if not
   if (lines.validLines.length === 0) {
     console.log("No valid lines found. Exiting.");
     return;
   }
+
+  // Set the output directory for the results
   setGitRepoRoot(lines.exerciseDirectory);
+
+  // Run the repo-checker for each repository found on each line
   const results = [];
   for (const studentHandin of lines.validLines) {
     console.log(studentHandin);
@@ -68,6 +80,8 @@ async function main(...args) {
     const res = await runAllTasks(studentName, gitUrl, exerciseName);
     results.push(res);
   }
+
+  // Create a HTML file with the results
   const status = results.join("<br><br>")
   let html = `
 <!DOCTYPE html>
@@ -104,6 +118,8 @@ async function main(...args) {
 </body>
 </html>
  `
+
+  // Write the HTML file to the output directory
   const outputFileName = path.join(lines.exerciseDirectory, "index.html");
   console.log(`Writing output to ${outputFileName}`);
   fs.writeFileSync(outputFileName, html);
