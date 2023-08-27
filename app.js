@@ -38,6 +38,7 @@ function readAndParseFile(filePath) {
 }
 
 async function main(...args) {
+  /*
   console.log(`Running with args: ${args}`);
   if(args.length < 3) {
     console.error("Missing argument: path to file with student handins");
@@ -45,7 +46,10 @@ async function main(...args) {
     process.exit(1);
   }
   let file = args[2];
+  */
   //file = file || "repos-to-check.txt";
+  const file = `${process.cwd()}\\result\\input\\repos-to-check.txt`;
+  
   let lines
   try{
     console.log(`Reading file ${file}`);
@@ -55,7 +59,7 @@ async function main(...args) {
     console.error(`Could not read file ${file}. Exiting.`)
     process.exit(1);
   }
-
+  console.log(lines)
   if (lines.nonValidLines.length > 0) {
     console.error("The following lines are not valid, and will not be used:");
     lines.nonValidLines.forEach(line => console.log(line));
@@ -65,7 +69,6 @@ async function main(...args) {
     console.log("No valid lines found. Exiting.");
     return;
   }
-
   setGitRepoRoot(lines.exerciseDirectory);
   const results = [];
   for (const studentHandin of lines.validLines) {
