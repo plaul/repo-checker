@@ -49,7 +49,7 @@ async function main(...args) {
     console.error(`Could not read file ${file}. Exiting.`)
     process.exit(1);
   }
-  console.log(lines)
+  
   if (lines.nonValidLines.length > 0) {
     console.error("The following lines are not valid, and will not be used:");
     lines.nonValidLines.forEach(line => console.log(line));
