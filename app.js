@@ -38,16 +38,6 @@ function readAndParseFile(filePath) {
 }
 
 async function main(...args) {
-  /*
-  console.log(`Running with args: ${args}`);
-  if(args.length < 3) {
-    console.error("Missing argument: path to file with student handins");
-    console.error("Usage: node index.js <path-to-file-with-student-handins>")
-    process.exit(1);
-  }
-  let file = args[2];
-  */
-  //file = file || "repos-to-check.txt";
   const file = `${process.cwd()}\\result\\input\\repos-to-check.txt`;
   
   let lines
