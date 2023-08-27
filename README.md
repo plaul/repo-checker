@@ -8,7 +8,7 @@ $ npm install
 $ npm run generate
 ```
 3. Open `./result/input/repos-to-check.txt` and configure the repositories you want to check.
-The output of your `repos-to-check.txt`-file should contain some predefined input similair to below:
+The output of your `repos-to-check.txt`-file should contain some predefined input similar to below:
 ```
 exerciseRepository C:\Users\pc\Desktop\repo-checker\result\output
 name1;GitHub URL;week1
