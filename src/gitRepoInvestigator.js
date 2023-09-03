@@ -104,7 +104,8 @@ export const runAllTasks = async (sName, gitUrl, exName) => {
       status += ERR_START + "Jeg kunne ikke clone dit repository. Enten eksisterer det ikke, eller er PRIVATE!" + END
       throw new Error("Could not clone")
     }
-    status += `${START}Jeg har succesfuldt klonet dit projekt${END}\n`
+    status += `${START}Jeg har succesfuldt klonet dit projekt (<a href="${repoUrl}">Repo</a>) ${END}\n`
+    
     let task = "package"
     try {
       let output = await runMavenTask(task)
